@@ -12,20 +12,20 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "frontend/home.html"));
 });
 //  sends to tables page 
 app.get("/tables", function (req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
+    res.sendFile(path.join(__dirname, "frontend/tables.html"));
 });
 // sends to reservation page 
 app.get("/reservation", function (req, res) {
-    res.sendFile(path.join(__dirname, "reservation.html"));
+    res.sendFile(path.join(__dirname, "frontend/reservation.html"));
 });
 
 // Displays reservation, or returns false
 app.get("/reservation/:reservation", function (req, res) {
-    var reserve = req.params.reserve;
+    var reserve = req.params.reservation;
 
     console.log(reserve);
     for (var i = 0; i < reserve.length; i++) {
@@ -41,7 +41,7 @@ app.post("/api/tables", function(req, res) {
 
     var newreservation = req.body;
 
-    newreservatopm.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
+    newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
   
     console.log(newreservation);
   
