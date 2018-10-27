@@ -1,5 +1,6 @@
 var express = require("express")
 var path = require("path");
+var tabledata = require(`./data.js`)
 
 // Sets up the Express App
 // =============================================================
@@ -22,7 +23,9 @@ app.get("/tables", function (req, res) {
 app.get("/reservation", function (req, res) {
     res.sendFile(path.join(__dirname, "reservation.html"));
 });
-
+app.get("/api/tables", function(req,res){
+    res.json(table)
+})
 // Displays reservation, or returns false
 app.get("/reservation/:reservation", function (req, res) {
     var reserve = req.params.reservation;
@@ -36,7 +39,7 @@ app.get("/reservation/:reservation", function (req, res) {
 
     return res.json(false);
 });
-
+let table = []
 app.post("/api/tables", function(req, res) {
 
     var newreservation = req.body;
@@ -45,7 +48,7 @@ app.post("/api/tables", function(req, res) {
   
     console.log(newreservation);
   
-    characters.push(newresrvation);
+    table.push(newreservation);
   
     res.json(newreservation);
   });
