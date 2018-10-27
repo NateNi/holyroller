@@ -13,15 +13,15 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "./public/home.html"));
 });
 //  sends to tables page 
 app.get("/tables", function (req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
+    res.sendFile(path.join(__dirname, "./public/tables.html"));
 });
 // sends to reservation page 
 app.get("/reservation", function (req, res) {
-    res.sendFile(path.join(__dirname, "reservation.html"));
+    res.sendFile(path.join(__dirname, "./public/reservation.html"));
 });
 app.get("/api/tables", function(req,res){
     res.json(table)
